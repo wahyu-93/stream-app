@@ -32,3 +32,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
     });
 });
+
+Route::get('/', function(){
+    return view('index');
+});
