@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
@@ -20,12 +21,12 @@ use Illuminate\Support\Facades\Route;
 //     return view('admin.movies.index');
 // });
 
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin'], function () {
     Route::get('login', [LoginController::class, 'loginForm'])->name('admin.login.form');
     Route::post('login', [LoginController::class, 'authenticate'])->name('admin.login.authenticate');
 
     // middleware   
-    Route::group(['middleware' => 'auth.admin'], function(){
+    Route::group(['middleware' => 'auth.admin'], function () {
         Route::resource('movies', MovieController::class);
         Route::get('/transaction', [TransactionController::class, 'index'])->name('admin.transaction.index');
 
@@ -33,6 +34,12 @@ Route::group(['prefix' => 'admin'], function(){
     });
 });
 
-Route::get('/', function(){
+Route::get('/', function () {
     return view('index');
-});
+})->name('member.index');
+
+Route::get('/register', [RegisterController::class, 'registerForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'registerStore'])->name('register.store');
+
+Route::get('/login', [LoginController::class, 'loginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'auth'])->name('login.auth');

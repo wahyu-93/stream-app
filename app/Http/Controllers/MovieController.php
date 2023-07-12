@@ -41,19 +41,19 @@ class MovieController extends Controller
     public function store(MovieRequest $request)
     {
         $simpan = Movie::create($request->except('_token'));
-      
+
         // simpan foto
         $smallThumbnail = $request->file('small_thumbnail');
         $largeThumbnail = $request->file('large_thumbnail');
 
-        $pathSmallThumbnail = $smallThumbnail->storeAs('public/thumbnail/' , Str::random(10).$smallThumbnail->getClientOriginalName());
-        $pathLargeThumbnail = $largeThumbnail->storeAs('public/thumbnail/' , Str::random(10).$largeThumbnail->getClientOriginalName());
-        
+        $pathSmallThumbnail = $smallThumbnail->storeAs('public/thumbnail/', Str::random(10) . $smallThumbnail->getClientOriginalName());
+        $pathLargeThumbnail = $largeThumbnail->storeAs('public/thumbnail/', Str::random(10) . $largeThumbnail->getClientOriginalName());
+
         $simpan->update([
             'small_thumbnail'   => $pathSmallThumbnail,
             'large_thumbnail'   => $pathLargeThumbnail,
         ]);
-        
+
         return back()->with(['status' => true, 'message' => 'Data Berhasil Disimpan']);
     }
 
@@ -89,25 +89,23 @@ class MovieController extends Controller
     public function update(MovieRequestEdit $request, Movie $movie)
     {
         // cek file small thumbnail
-        if ($request->hasFile('small_thumbnail')){
+        if ($request->hasFile('small_thumbnail')) {
             // kalo ada hapus foto lama 
             Storage::disk('local')->delete($movie->small_thumbnail);
-        }
-        else {
+        } else {
             $smallThumbnail = $request->file('small_thumbnail');
-            $pathSmallThumbnail = $smallThumbnail->storeAs('public/thumbnail/' , Str::random(10).$smallThumbnail->getClientOriginalName());
+            $pathSmallThumbnail = $smallThumbnail->storeAs('public/thumbnail/', Str::random(10) . $smallThumbnail->getClientOriginalName());
         }
 
         // cek file large thumbnail
-        if ($request->hasFile('large_thumbnail')){
+        if ($request->hasFile('large_thumbnail')) {
             // kalo ada hapus foto lama 
             Storage::disk('local')->delete($movie->large_thumbnail);
-        }
-        else {
+        } else {
             $largeThumbnail = $request->file('small_thumbnail');
-            $pathLargeThumbnail = $largeThumbnail->storeAs('public/thumbnail/' , Str::random(10).$largeThumbnail->getClientOriginalName());
+            $pathLargeThumbnail = $largeThumbnail->storeAs('public/thumbnail/', Str::random(10) . $largeThumbnail->getClientOriginalName());
         }
-       
+
         // update data
 
     }

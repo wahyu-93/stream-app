@@ -42,7 +42,7 @@
                 <!-- Logo & Toggler Button here -->
                 <div class="flex items-center justify-between block lg:hidden">
                     <!-- LOGO -->
-                    <a href="/">
+                    <a href="{{ route('member.index') }}">
                         <img src="{{ asset('stream/assets/images/stream.svg') }}" alt="stream" />
                     </a>
                     <!-- RESPONSIVE NAVBAR BUTTON TOGGLER -->
@@ -66,7 +66,7 @@
                             <a href="pricing.html" class="nav-link-item">Pricing</a>
                         </div>
                         <a href="/" class="hidden lg:block -ml-36">
-                            <img src="{{ asset('stream/assets/images/stream.svg') }}" alt="stream" />
+                            <img src="{{ asset('stream/assets/images/Stream.svg') }}" alt="stream" />
                         </a>
                         <div class="flex flex-col w-full font-normal lg:w-auto lg:gap-12 lg:items-center lg:flex-row">
                             <a href="#"
@@ -90,7 +90,7 @@
                 Everything you need to entertain yourself and <br class="hidden lg:block" />
                 your family from anywhere you are
             </p>
-            <a href="#" class="mt-5 rounded-full bg-indigo-600 text-center py-3 px-11">
+            <a href="{{ route('register') }}" class="mt-5 rounded-full bg-indigo-600 text-center py-3 px-11">
                 <span class="text-white font-semibold text-base">Get Started</span>
             </a>
         </section>
