@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Member\LoginController as MemberLoginController;
 use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\TransactionController;
@@ -41,5 +42,5 @@ Route::get('/', function () {
 Route::get('/register', [RegisterController::class, 'registerForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'registerStore'])->name('register.store');
 
-Route::get('/login', [LoginController::class, 'loginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'auth'])->name('login.auth');
+Route::get('/login', [MemberLoginController::class, 'loginForm'])->name('login');
+Route::post('/login', [MemberLoginController::class, 'auth'])->name('login.auth');
