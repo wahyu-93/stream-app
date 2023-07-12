@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +21,5 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin'], function(){
     Route::resource('movies', MovieController::class);
+    Route::get('/transaction', [TransactionController::class, 'index'])->name('admin.transaction.index');
 });
