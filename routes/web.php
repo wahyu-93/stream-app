@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
@@ -15,11 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.movies.index');
-});
+// Route::get('/', function () {
+//     return view('admin.movies.index');
+// });
 
 Route::group(['prefix' => 'admin'], function(){
-    Route::resource('movies', MovieController::class);
-    Route::get('/transaction', [TransactionController::class, 'index'])->name('admin.transaction.index');
+    Route::get('login', [LoginController::class, 'loginForm'])->name('admin.login.form');
+    Route::post('login', [LoginController::class, 'authenticate'])->name('admin.login.authenticate');
+
+    // middleware   
+    Route::group(['middleware' => 'auth.admin'], function(){
+        Route::resource('movies', MovieController::class);
+        Route::get('/transaction', [TransactionController::class, 'index'])->name('admin.transaction.index');
+
+        Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
+    });
 });
