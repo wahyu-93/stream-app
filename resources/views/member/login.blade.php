@@ -35,8 +35,8 @@
             <div class="pt-[30px] relative">
                 <!-- Logo -->
                 <div class=" flex flex-row justify-center items-center">
-                    <a href="{{ route('member.index') }}" class="block">
-                        <img src="{{ asset('stream/assets/images/Stream.svg') }}" alt="stream" />
+                    <a href="/index.html" class="block">
+                        <img src="{{ asset('stream/assets/images/stream.svg') }}" alt="stream" />
                     </a>
                 </div>
 
@@ -49,7 +49,8 @@
                     </div>
 
                     <!-- Form login -->
-                        <form action="{{ route('login.auth') }}" method="POST" class="mt-[70px] flex flex-col bg-white p-[30px] rounded-2xl gap-6">
+                    <section class="w-11/12 max-w-[460px]">
+                        <form action="{{ route('login') }}" method="POST" class="mt-[70px] flex flex-col bg-white p-[30px] rounded-2xl gap-6">
                             @csrf
                             <div class="form-input flex flex-col gap-3">
                                 <label for="email" class="text-base font-medium text-stream-dark">Email Address</label>
