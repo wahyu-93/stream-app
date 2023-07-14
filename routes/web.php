@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Member\DashboardController;
 use App\Http\Controllers\Member\LoginController as MemberLoginController;
+use App\Http\Controllers\Member\MovieController as MemberMovieController;
 use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\TransactionController;
@@ -44,3 +46,8 @@ Route::post('/register', [RegisterController::class, 'registerStore'])->name('re
 
 Route::get('/login', [MemberLoginController::class, 'loginForm'])->name('login');
 Route::post('/login', [MemberLoginController::class, 'auth'])->name('login.auth');
+
+Route::group(['prefix' => 'member'], function(){
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('member.dashboard');
+    Route::get('movie/{id}/detail', [MemberMovieController::class, 'showDetailMovie'])->name('member.movie.detail');
+});
