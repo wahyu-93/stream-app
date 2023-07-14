@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Member\DashboardController;
 use App\Http\Controllers\Member\LoginController as MemberLoginController;
 use App\Http\Controllers\Member\MovieController as MemberMovieController;
+use App\Http\Controllers\Member\PricingController;
 use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\TransactionController;
@@ -52,3 +53,5 @@ Route::group(['prefix' => 'member', 'middleware' => 'auth'], function(){
     Route::get('movie/{id}/detail', [MemberMovieController::class, 'showDetailMovie'])->name('member.movie.detail');
     Route::get('logout', [MemberLoginController::class, 'logout'])->name('member.logout');
 });
+
+Route::get('pricing', [PricingController::class, 'index'])->name('pricing');
