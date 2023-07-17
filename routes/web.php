@@ -6,6 +6,7 @@ use App\Http\Controllers\Member\LoginController as MemberLoginController;
 use App\Http\Controllers\Member\MovieController as MemberMovieController;
 use App\Http\Controllers\Member\PricingController;
 use App\Http\Controllers\Member\RegisterController;
+use App\Http\Controllers\Member\SubcriptionController;
 use App\Http\Controllers\Member\TransactionController as MemberTransactionController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\TransactionController;
@@ -54,6 +55,9 @@ Route::group(['prefix' => 'member', 'middleware' => 'auth'], function () {
     Route::get('movie/{id}/detail', [MemberMovieController::class, 'showDetailMovie'])->name('member.movie.detail');
     Route::post('transaction', [MemberTransactionController::class, 'store'])->name('member.transaction');
     Route::get('logout', [MemberLoginController::class, 'logout'])->name('member.logout');
+
+    Route::get('subscription', [SubcriptionController::class, 'index'])->name('subscription');
+    Route::delete('/subscription/delete/{id}', [SubcriptionController::class, 'destroy'])->name('member.user_premium.destroy');
 });
 
 Route::get('pricing', [PricingController::class, 'index'])->name('pricing');

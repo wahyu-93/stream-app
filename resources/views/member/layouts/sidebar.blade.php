@@ -70,7 +70,7 @@
                 Your Gifts
             </a>
             <div class="flex border-t border-softpur"></div>
-            <a href="#" class="side-link">
+            <a href="{{ route('subscription') }}" class="side-link">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                     xmlns="http://www.w3.org/2000/svg">
                     <path

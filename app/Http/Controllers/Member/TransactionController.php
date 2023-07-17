@@ -17,7 +17,7 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         // cari package dan data customer
-        $package = Package::find($request->transaction_id);
+        $package = Package::find($request->package_id);
         $customer = Auth::user();
 
         // simpan dalam table transaction

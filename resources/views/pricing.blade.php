@@ -132,7 +132,7 @@
 
                             <form action="{{ route('member.transaction') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="transaction_id" value="{{ $standart->id }}">
+                                <input type="hidden" name="package_id" value="{{ $standart->id }}">
 
                                 <button href="success_page.html"
                                     class="mt-10 py-3 px-16 block outline outline-1 outline-stream-gray rounded-full text-center">
@@ -197,7 +197,7 @@
 
                             <form action="{{ route('member.transaction') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="transaction_id" value="{{ $gold->id }}">
+                                <input type="hidden" name="package_id" value="{{ $gold->id }}">
 
                                 <button href="success_page.html"
                                     class="mt-10 py-3 px-16 block bg-indigo-600 rounded-full text-center">
