@@ -50,6 +50,8 @@ Route::post('/register', [RegisterController::class, 'registerStore'])->name('re
 Route::get('/login', [MemberLoginController::class, 'loginForm'])->name('login');
 Route::post('/login', [MemberLoginController::class, 'auth'])->name('login.auth');
 
+Route::view('/payment-finish', 'member.payment-finish')->name('member.payment.finish');
+
 Route::group(['prefix' => 'member', 'middleware' => 'auth'], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('member.dashboard');
     Route::get('movie/{id}/detail', [MemberMovieController::class, 'showDetailMovie'])->name('member.movie.detail');
