@@ -5,6 +5,7 @@
 @section('title-description', 'Our selected movies for your mood')
 
 @section('content')
+
 <!-- Details -->
 <div class="flex gap-14 items-start">
     <a href="{{ route('member.dashboard') }}">
@@ -17,7 +18,7 @@
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
                 <img src="{{ asset('stream/assets/images/ic_play.svg') }}" width="80" alt="">
             </div>
-            <a href="" class="inset-0 absolute z-50"></a>
+            <a href="{{ route('member.movie.watch', $movie->id) }}" class="inset-0 absolute z-50"></a>
         </div>
 
         <!-- Judul & Rating -->

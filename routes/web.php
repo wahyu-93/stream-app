@@ -53,6 +53,8 @@ Route::post('/login', [MemberLoginController::class, 'auth'])->name('login.auth'
 Route::group(['prefix' => 'member', 'middleware' => 'auth'], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('member.dashboard');
     Route::get('movie/{id}/detail', [MemberMovieController::class, 'showDetailMovie'])->name('member.movie.detail');
+    Route::get('movie/{id}/watch', [MemberMovieController::class, 'watch'])->name('member.movie.watch');
+
     Route::post('transaction', [MemberTransactionController::class, 'store'])->name('member.transaction');
     Route::get('logout', [MemberLoginController::class, 'logout'])->name('member.logout');
 
